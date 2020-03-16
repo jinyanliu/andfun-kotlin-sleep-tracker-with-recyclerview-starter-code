@@ -20,7 +20,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -78,7 +77,7 @@ class SleepTrackerFragment : Fragment() {
         binding.sleepList.adapter = adapter
 
         sleepTrackerViewModel.nights.observe(this, Observer { nights ->
-            nights?.let { adapter.submitList(it) }
+            nights?.let { adapter.addHeaderAndSubmitList(it) }
         })
 
         sleepTrackerViewModel.navigateToSleepDataQuality.observe(this, Observer {night ->
