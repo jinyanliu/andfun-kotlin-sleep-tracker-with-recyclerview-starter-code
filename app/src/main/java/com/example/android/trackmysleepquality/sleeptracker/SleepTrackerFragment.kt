@@ -71,7 +71,7 @@ class SleepTrackerFragment : Fragment() {
         binding.sleepList.adapter = adapter
 
         sleepTrackerViewModel.nights.observe(this, Observer { nights ->
-            nights?.let { adapter.data = it }
+            nights?.let { adapter.submitList(it) }
         })
 
         // Add an Observer on the state variable for showing a Snackbar message
